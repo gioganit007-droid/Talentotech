@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TALENTO TECH ORIENTE - Formación Tecnológica</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="logo">
+                <h1 class="logo-text">TALENTO TECH <span class="logo-accent">ORIENTE</span></h1>
+                <p class="logo-subtitle">Transformando tu futuro tecnológico</p>
+            </div>
+            <nav class="nav">
+                <a href="#inicio" class="nav-link">Inicio</a>
+                <a href="#cursos" class="nav-link">Cursos</a>
+                <a href="#ubicacion" class="nav-link">Ubicación</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h2>Formación Tecnológica de <span class="gradient-text">Clase Mundial</span></h2>
+            <p>Bootcamps y cursos online y presenciales para impulsar tu carrera</p>
+        </div>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="online">Online</button>
+            <button class="filter-btn" data-filter="presencial">Presencial</button>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="cursos" class="courses-section">
+        <div class="container">
+            <h2 class="section-title">Nuestros <span class="gradient-text">Cursos y Bootcamps</span></h2>
+            <div class="courses-grid" id="coursesGrid">
+                <!-- Course 1: Full Stack Developer -->
+                <div class="course-card" data-type="online presencial">
+                    <div class="course-badge online-badge">Online</div>
+                    <div class="course-badge presencial-badge">Presencial</div>
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop" alt="Full Stack Developer">
+                        <div class="course-overlay">
+                            <span class="course-icon">💻</span>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Full Stack Developer</h3>
+                        <p class="course-description">Domina las tecnologías más demandadas del mercado. Aprende frontend y backend desde cero.</p>
+                        <div class="course-details">
+                            <div class="detail-item"><span class="icon">⏱️</span> <span><strong>Duración:</strong> 480 horas</span></div>
+                            <div class="detail-item"><span class="icon">📅</span> <span><strong>Días:</strong> Lunes a Viernes</span></div>
+                            <div class="detail-item"><span class="icon">🕐</span> <span><strong>Jornada:</strong> Matutina (8:00 AM - 12:00 PM)</span></div>
+                            <div class="detail-item"><span class="icon">📚</span> <span><strong>Modalidad:</strong> Online y Presencial</span></div>
+                        </div>
+                        <button class="btn-enroll">Inscribirse</button>
+                    </div>
+                </div>
+
+                <!-- Course 2: Data Science -->
+                <div class="course-card" data-type="online">
+                    <div class="course-badge online-badge">Online</div>
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" alt="Data Science">
+                        <div class="course-overlay">
+                            <span class="course-icon">📊</span>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Data Science & Analytics</h3>
+                        <p class="course-description">Convierte datos en decisiones inteligentes. Aprende Python, Machine Learning y Big Data.</p>
+                        <div class="course-details">
+                            <div class="detail-item"><span class="icon">⏱️</span> <span><strong>Duración:</strong> 360 horas</span></div>
+                            <div class="detail-item"><span class="icon">📅</span> <span><strong>Días:</strong> Martes y Jueves</span></div>
+                            <div class="detail-item"><span class="icon">🕐</span> <span><strong>Jornada:</strong> Nocturna (6:00 PM - 10:00 PM)</span></div>
+                            <div class="detail-item"><span class="icon">📚</span> <span><strong>Modalidad:</strong> Online</span></div>
+                        </div>
+                        <button class="btn-enroll">Inscribirse</button>
+                    </div>
+                </div>
+
+                <!-- Course 3: UX/UI Design -->
+                <div class="course-card" data-type="presencial">
+                    <div class="course-badge presencial-badge">Presencial</div>
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop" alt="UX/UI Design">
+                        <div class="course-overlay">
+                            <span class="course-icon">🎨</span>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>UX/UI Design</h3>
+                        <p class="course-description">Diseña experiencias digitales excepcionales. Domina Figma, Adobe XD y metodologías de diseño.</p>
+                        <div class="course-details">
+                            <div class="detail-item"><span class="icon">⏱️</span> <span><strong>Duración:</strong> 240 horas</span></div>
+                            <div class="detail-item"><span class="icon">📅</span> <span><strong>Días:</strong> Sábados</span></div>
+                            <div class="detail-item"><span class="icon">🕐</span> <span><strong>Jornada:</strong> Intensiva (9:00 AM - 5:00 PM)</span></div>
+                            <div class="detail-item"><span class="icon">📚</span> <span><strong>Modalidad:</strong> Presencial</span></div>
+                        </div>
+                        <button class="btn-enroll">Inscribirse</button>
+                    </div>
+                </div>
+
+                <!-- Course 4: Cloud Computing -->
+                <div class="course-card" data-type="online presencial">
+                    <div class="course-badge online-badge">Online</div>
+                    <div class="course-badge presencial-badge">Presencial</div>
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop" alt="Cloud Computing">
+                        <div class="course-overlay">
+                            <span class="course-icon">☁️</span>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Cloud Computing & DevOps</h3>
+                        <p class="course-description">Aprende AWS, Azure, Docker y Kubernetes. Domina la infraestructura en la nube.</p>
+                        <div class="course-details">
+                            <div class="detail-item"><span class="icon">⏱️</span> <span><strong>Duración:</strong> 320 horas</span></div>
+                            <div class="detail-item"><span class="icon">📅</span> <span><strong>Días:</strong> Lunes, Miércoles y Viernes</span></div>
+                            <div class="detail-item"><span class="icon">🕐</span> <span><strong>Jornada:</strong> Vespertina (2:00 PM - 6:00 PM)</span></div>
+                            <div class="detail-item"><span class="icon">📚</span> <span><strong>Modalidad:</strong> Online y Presencial</span></div>
+                        </div>
+                        <button class="btn-enroll">Inscribirse</button>
+                    </div>
+                </div>
+
+                <!-- Course 5: Mobile Development -->
+                <div class="course-card" data-type="online">
+                    <div class="course-badge online-badge">Online</div>
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop" alt="Mobile Development">
+                        <div class="course-overlay">
+                            <span class="course-icon">📱</span>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Mobile Development</h3>
+                        <p class="course-description">Crea aplicaciones móviles para iOS y Android. React Native, Flutter y desarrollo nativo.</p>
+                        <div class="course-details">
+                            <div class="detail-item"><span class="icon">⏱️</span> <span><strong>Duración:</strong> 400 horas</span></div>
+                            <div class="detail-item"><span class="icon">📅</span> <span><strong>Días:</strong> Lunes a Viernes</span></div>
+                            <div class="detail-item"><span class="icon">🕐</span> <span><strong>Jornada:</strong> Matutina (8:00 AM - 12:00 PM)</span></div>
+                            <div class="detail-item"><span class="icon">📚</span> <span><strong>Modalidad:</strong> Online</span></div>
+                        </div>
+                        <button class="btn-enroll">Inscribirse</button>
+                    </div>
+                </div>
+
+                <!-- Course 6: Cybersecurity -->
+                <div class="course-card" data-type="presencial">
+                    <div class="course-badge presencial-badge">Presencial</div>
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop" alt="Cybersecurity">
+                        <div class="course-overlay">
+                            <span class="course-icon">🔒</span>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Cybersecurity</h3>
+                        <p class="course-description">Conviértete en un experto en seguridad informática. Ethical Hacking, Penetration Testing y más.</p>
+                        <div class="course-details">
+                            <div class="detail-item"><span class="icon">⏱️</span> <span><strong>Duración:</strong> 500 horas</span></div>
+                            <div class="detail-item"><span class="icon">📅</span> <span><strong>Días:</strong> Lunes a Viernes</span></div>
+                            <div class="detail-item"><span class="icon">🕐</span> <span><strong>Jornada:</strong> Nocturna (6:00 PM - 10:00 PM)</span></div>
+                            <div class="detail-item"><span class="icon">📚</span> <span><strong>Modalidad:</strong> Presencial</span></div>
+                        </div>
+                        <button class="btn-enroll">Inscribirse</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="ubicacion" class="location-section">
+        <div class="container">
+            <h2 class="section-title">Nuestra <span class="gradient-text">Ubicación</span></h2>
+            <p class="section-subtitle">Visítanos en nuestras instalaciones o únete desde cualquier lugar</p>
+            
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+
+            <div class="location-info">
+                <div class="info-card">
+                    <div class="info-icon">📍</div>
+                    <h3>Dirección</h3>
+                    <p>Avenida 3 Este # 13-33</p>
+                    <p>Barrio Los Caobos</p>
+                    <p>Cúcuta, Norte de Santander</p>
+                    <p>Colombia</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🕐</div>
+                    <h3>Horario de Atención</h3>
+                    <p>Lunes a Viernes: 8:00 AM - 8:00 PM</p>
+                    <p>Sábados: 9:00 AM - 5:00 PM</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">📞</div>
+                    <h3>Contacto</h3>
+                    <p>Teléfono: +57 XXX XXX XXXX</p>
+                    <p>Email: info@talentotechoriente.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contáctanos</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <input type="text" placeholder="Nombre completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Teléfono" required>
+                </div>
+                <div class="form-group">
+                    <select required>
+                        <option value="">Selecciona un curso</option>
+                        <option value="fullstack">Full Stack Developer</option>
+                        <option value="datascience">Data Science & Analytics</option>
+                        <option value="uxui">UX/UI Design</option>
+                        <option value="cloud">Cloud Computing & DevOps</option>
+                        <option value="mobile">Mobile Development</option>
+                        <option value="cybersecurity">Cybersecurity</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Mensaje" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 TALENTO TECH ORIENTE. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="#" class="social-link">Facebook</a>
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">LinkedIn</a>
+                <a href="#" class="social-link">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&callback=initMap"></script>
+</body>
+</html>
