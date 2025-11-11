@@ -1,84 +1,72 @@
 # TALENTO TECH ORIENTE - Página Web
 
-Página web moderna y elegante para mostrar cursos y bootcamps de TALENTO TECH ORIENTE, con imágenes de alta calidad y Google Maps integrado.
+Página web moderna y elegante para mostrar cursos y bootcamps de TALENTO TECH ORIENTE, con integración de videos de Cloudinary y Google Maps en tiempo real.
 
 ## 🚀 Características
 
 - ✅ Diseño moderno con colores elegantes y vibrantes
-- ✅ Imágenes de alta calidad de Unsplash para cada curso
 - ✅ Información detallada de cursos online y presenciales
 - ✅ Duración horaria, días y tipos de jornadas de clases
-- ✅ Ubicación con Google Maps integrado (Cúcuta, Norte de Santander)
+- ✅ Videos integrados con Cloudinary para cada curso
+- ✅ Ubicación en tiempo real con Google Maps
 - ✅ Filtros interactivos por modalidad (Online/Presencial)
 - ✅ Formulario de contacto funcional
 - ✅ Diseño completamente responsive
-- ✅ Animaciones y efectos hover suaves
 
-## 📋 Características Técnicas
+## 📋 Requisitos Previos
 
-- **HTML5** semántico y accesible
-- **CSS3** con variables personalizadas y animaciones
-- **JavaScript vanilla** sin dependencias externas
-- **Google Maps API** para mostrar ubicación
-- **Fuentes de Google Fonts** (Poppins)
-- **Imágenes de Unsplash** optimizadas
+1. **Cuenta de Google Cloud** para obtener una API Key de Google Maps
+2. **Cuenta de Cloudinary** para alojar los videos de los cursos
+3. Navegador web moderno (Chrome, Firefox, Safari, Edge)
 
 ## 🛠️ Configuración
 
-### 1. Configurar Google Maps API (Opcional)
-
-El proyecto ya incluye una API Key de Google Maps de demostración. Para usar tu propia API Key:
+### 1. Configurar Google Maps API
 
 1. Ve a [Google Cloud Console](https://console.cloud.google.com/)
 2. Crea un nuevo proyecto o selecciona uno existente
 3. Habilita la **Maps JavaScript API**
-4. Crea una **API Key** y restrígela a tu dominio
-5. Abre `index.html` y reemplaza la API Key en la línea del script de Google Maps:
+4. Crea una **API Key** y restringirla a tu dominio
+5. Abre `index.html` y reemplaza `YOUR_API_KEY` en la línea del script de Google Maps:
 
 ```html
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY_AQUI&callback=initMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY_AQUI&callback=initMap" async defer></script>
 ```
 
-### 2. Personalizar Ubicación del Negocio
+### 2. Configurar Videos de Cloudinary
 
-La ubicación actual es:
-- **Dirección:** Avenida 3 Este # 13-33, Barrio Los Caobos
-- **Ciudad:** Cúcuta, Norte de Santander, Colombia
-- **Coordenadas:** lat: 7.8942, lng: -72.5039
-
-Para cambiar la ubicación, edita en `script.js`:
+1. Crea una cuenta en [Cloudinary](https://cloudinary.com/)
+2. Sube tus videos de cursos a Cloudinary
+3. Abre `script.js` y actualiza la función `initializeCloudinaryVideos()` con tus URLs de video:
 
 ```javascript
-const talentoTechLocation = { lat: 7.8942, lng: -72.5039 }; // Reemplaza con tus coordenadas
+const cloudinaryVideos = {
+    'Full Stack Developer': 'https://res.cloudinary.com/TU_CLOUD_NAME/video/upload/v1234567890/fullstack.mp4',
+    'Data Science & Analytics': 'https://res.cloudinary.com/TU_CLOUD_NAME/video/upload/v1234567890/datascience.mp4',
+    // ... más videos
+};
+```
+
+**Formato de URL de Cloudinary:**
+```
+https://res.cloudinary.com/TU_CLOUD_NAME/video/upload/v1234567890/NOMBRE_VIDEO.mp4
+```
+
+### 3. Personalizar Ubicación del Negocio
+
+En `script.js`, actualiza las coordenadas de tu ubicación:
+
+```javascript
+const businessLocation = { lat: 19.4326, lng: -99.1332 }; // Reemplaza con tus coordenadas
 ```
 
 Para obtener tus coordenadas:
 - Usa [Google Maps](https://www.google.com/maps) y busca tu dirección
 - Haz clic derecho en el marcador y selecciona las coordenadas
 
-También actualiza la información de contacto en `index.html`:
+También actualiza la información en `index.html`:
 - Dirección en la sección de ubicación
-- Teléfono y email en las tarjetas de información
-
-### 3. Cambiar Imágenes de los Cursos
-
-Las imágenes actuales vienen de Unsplash. Para usar tus propias imágenes:
-
-1. Abre `index.html`
-2. Busca las etiquetas `<img>` dentro de `.course-image`
-3. Reemplaza las URLs con las de tus propias imágenes:
-
-```html
-<img src="TU_IMAGEN_AQUI.jpg" alt="Nombre del Curso">
-```
-
-**Imágenes actuales:**
-- Full Stack Developer: Laptop con código
-- Data Science: Gráficos y analytics
-- UX/UI Design: Mesa de diseño
-- Cloud Computing: Tecnología espacial
-- Mobile Development: Dispositivos móviles
-- Cybersecurity: Seguridad digital
+- Teléfono y email en el formulario de contacto
 
 ## 📁 Estructura de Archivos
 
@@ -86,7 +74,7 @@ Las imágenes actuales vienen de Unsplash. Para usar tus propias imágenes:
 .
 ├── index.html          # Estructura HTML principal
 ├── styles.css          # Estilos CSS con diseño elegante
-├── script.js           # JavaScript para interactividad y Google Maps
+├── script.js           # JavaScript para interactividad
 └── README.md          # Este archivo
 ```
 
@@ -94,189 +82,52 @@ Las imágenes actuales vienen de Unsplash. Para usar tus propias imágenes:
 
 Los colores principales están definidos en `styles.css` en la sección `:root`. Puedes personalizar:
 
-```css
-:root {
-    --primary-color: #6366f1;      /* Color principal (azul índigo) */
-    --secondary-color: #ec4899;    /* Color secundario (rosa) */
-    --accent-color: #10b981;       /* Color de acento (verde) */
-    --accent-orange: #f59e0b;      /* Color naranja para badges */
-    --accent-purple: #8b5cf6;      /* Color púrpura */
-    --dark-bg: #0f172a;            /* Fondo oscuro */
-    --dark-card: #1e293b;          /* Tarjetas oscuras */
-}
-```
+- `--primary-color`: Color principal (azul índigo)
+- `--secondary-color`: Color secundario (rosa)
+- `--accent-color`: Color de acento (verde)
+- `--accent-orange`: Color naranja para badges presenciales
+- `--dark-bg`: Color de fondo oscuro
 
 ## 📱 Cursos Incluidos
 
-La página incluye 6 cursos:
+La página incluye 6 cursos de ejemplo:
 
-1. **Full Stack Developer** - 480 horas
-   - Modalidad: Online y Presencial
-   - Jornada: Matutina (8:00 AM - 12:00 PM)
-   - Días: Lunes a Viernes
+1. **Full Stack Developer** - 480 horas (Online y Presencial)
+2. **Data Science & Analytics** - 360 horas (Online)
+3. **UX/UI Design** - 240 horas (Presencial)
+4. **Cloud Computing & DevOps** - 320 horas (Online y Presencial)
+5. **Mobile Development** - 400 horas (Online)
+6. **Cybersecurity** - 500 horas (Presencial)
 
-2. **Data Science & Analytics** - 360 horas
-   - Modalidad: Online
-   - Jornada: Nocturna (6:00 PM - 10:00 PM)
-   - Días: Martes y Jueves
-
-3. **UX/UI Design** - 240 horas
-   - Modalidad: Presencial
-   - Jornada: Intensiva (9:00 AM - 5:00 PM)
-   - Días: Sábados
-
-4. **Cloud Computing & DevOps** - 320 horas
-   - Modalidad: Online y Presencial
-   - Jornada: Vespertina (2:00 PM - 6:00 PM)
-   - Días: Lunes, Miércoles y Viernes
-
-5. **Mobile Development** - 400 horas
-   - Modalidad: Online
-   - Jornada: Matutina (8:00 AM - 12:00 PM)
-   - Días: Lunes a Viernes
-
-6. **Cybersecurity** - 500 horas
-   - Modalidad: Presencial
-   - Jornada: Nocturna (6:00 PM - 10:00 PM)
-   - Días: Lunes a Viernes
-
-### Agregar o Modificar Cursos
-
-Para agregar un nuevo curso, copia esta estructura en `index.html` dentro de la sección `.courses-grid`:
-
-```html
-<div class="course-card" data-type="online presencial">
-    <div class="course-badge online-badge">Online</div>
-    <div class="course-badge presencial-badge">Presencial</div>
-    <div class="course-image">
-        <img src="URL_DE_TU_IMAGEN" alt="Nombre del Curso">
-        <div class="course-overlay">
-            <span class="course-icon">🚀</span>
-        </div>
-    </div>
-    <div class="course-content">
-        <h3>Nombre del Curso</h3>
-        <p class="course-description">Descripción del curso...</p>
-        <div class="course-details">
-            <div class="detail-item"><span class="icon">⏱️</span> <span><strong>Duración:</strong> XXX horas</span></div>
-            <div class="detail-item"><span class="icon">📅</span> <span><strong>Días:</strong> Días de la semana</span></div>
-            <div class="detail-item"><span class="icon">🕐</span> <span><strong>Jornada:</strong> Horario</span></div>
-            <div class="detail-item"><span class="icon">📚</span> <span><strong>Modalidad:</strong> Online/Presencial</span></div>
-        </div>
-        <button class="btn-enroll">Inscribirse</button>
-    </div>
-</div>
-```
+Puedes modificar, agregar o eliminar cursos editando el HTML en la sección `#cursos`.
 
 ## 🚀 Uso
 
-1. Descarga o clona los archivos
-2. Abre `index.html` en tu navegador web
-3. Asegúrate de tener conexión a internet para:
+1. Abre `index.html` en tu navegador
+2. Asegúrate de tener conexión a internet para:
    - Cargar Google Maps
-   - Cargar imágenes de Unsplash
+   - Cargar videos de Cloudinary
    - Cargar fuentes de Google Fonts
-
-### Abrir en Servidor Local (Recomendado)
-
-Para evitar problemas con CORS, es recomendable usar un servidor local:
-
-**Opción 1: Python**
-```bash
-# Python 3
-python -m http.server 8000
-
-# Python 2
-python -m SimpleHTTPServer 8000
-```
-
-**Opción 2: Node.js (http-server)**
-```bash
-npm install -g http-server
-http-server
-```
-
-**Opción 3: VS Code Live Server**
-1. Instala la extensión "Live Server" en VS Code
-2. Haz clic derecho en `index.html` > "Open with Live Server"
-
-Luego accede a `http://localhost:8000` (o el puerto correspondiente).
 
 ## 📝 Notas Importantes
 
-### Google Maps
-- La API Key incluida es una clave de demostración pública
-- Para producción, **debes usar tu propia API Key**
-- Restringe la API Key a tu dominio para evitar uso no autorizado
-
-### Imágenes
-- Las imágenes de Unsplash son gratuitas para uso comercial
-- Se cargan desde los servidores de Unsplash (requiere internet)
-- Considera descargar y alojar las imágenes localmente para mejor rendimiento
-
-### Formulario de Contacto
-- Actualmente muestra un mensaje de éxito simulado
-- Para producción, conecta el formulario a un backend (PHP, Node.js, etc.)
-- Considera usar servicios como Formspree, EmailJS o Netlify Forms
+- **Google Maps API Key**: Es necesario para que el mapa funcione. Sin la clave, verás un error en la consola.
+- **Videos de Cloudinary**: Los videos de ejemplo usan URLs de demostración. Reemplázalos con tus propios videos.
+- **Formulario de Contacto**: Actualmente muestra un mensaje de éxito simulado. Deberás conectarlo a tu backend para procesar los envíos reales.
 
 ## 🔧 Funcionalidades JavaScript
 
-### Navegación y Filtros
-- **Smooth Scroll**: Navegación suave entre secciones
 - **Filtros de Cursos**: Filtra cursos por modalidad (Todos, Online, Presencial)
-- **Scroll Header**: El header cambia de estilo al hacer scroll
+- **Smooth Scroll**: Navegación suave entre secciones
+- **Google Maps**: Mapa interactivo con marcador de ubicación
+- **Formulario**: Validación y envío de formulario de contacto
+- **Animaciones**: Efectos de entrada para las tarjetas de cursos
 
-### Google Maps
-- **Mapa interactivo** con ubicación de TALENTO TECH ORIENTE
-- **Marcador personalizado** con animación de caída
-- **Info Window** con información de contacto y botón de direcciones
-- **Estilos personalizados** oscuros que coinciden con el diseño de la página
+## 📞 Soporte
 
-### Interacciones
-- **Botón Inscribirse**: Lleva automáticamente al formulario de contacto
-- **Validación de formulario**: Campos requeridos antes de enviar
-- **Animaciones de entrada**: Las tarjetas aparecen con animaciones al hacer scroll
-- **Efectos hover**: Zoom en imágenes y elevación de tarjetas
-
-## 📞 Información de Contacto
-
-**TALENTO TECH ORIENTE**
-- 📍 Dirección: Avenida 3 Este # 13-33, Barrio Los Caobos, Cúcuta, Norte de Santander, Colombia
-- 📧 Email: info@talentotechoriente.com
-- 📱 Teléfono: +57 XXX XXX XXXX
-- ⏰ Horario: Lunes a Viernes 8:00 AM - 8:00 PM, Sábados 9:00 AM - 5:00 PM
-
-## 🌐 Navegadores Soportados
-
-- ✅ Chrome (últimas 2 versiones)
-- ✅ Firefox (últimas 2 versiones)
-- ✅ Safari (últimas 2 versiones)
-- ✅ Edge (últimas 2 versiones)
-- ✅ Opera (últimas 2 versiones)
-
-## 📱 Responsive Design
-
-La página está completamente optimizada para:
-- 📱 Móviles (320px - 768px)
-- 📱 Tablets (768px - 1024px)
-- 💻 Desktop (1024px+)
-
-## 🐛 Solución de Problemas
-
-### El mapa de Google Maps no se muestra
-1. Verifica que tienes conexión a internet
-2. Revisa la consola del navegador para ver si hay errores de API Key
-3. Asegúrate de que la Maps JavaScript API está habilitada en Google Cloud Console
-
-### Las imágenes no cargan
-1. Verifica tu conexión a internet
-2. Comprueba que las URLs de Unsplash sean correctas
-3. Considera usar imágenes locales si tienes problemas frecuentes
-
-### El formulario no funciona
-1. El formulario actual es solo una demostración
-2. Para enviar emails reales, necesitas configurar un backend
-3. Puedes usar servicios como Formspree, EmailJS o tu propio servidor
+Para más información o soporte, contacta a:
+- Email: info@talentotechoriente.com
+- Teléfono: +123 456 7890
 
 ## 📄 Licencia
 
@@ -284,31 +135,7 @@ Este proyecto es propiedad de TALENTO TECH ORIENTE.
 
 ---
 
-## 🔄 Cambios Recientes
-
-### Versión 2.0 (Actualización Reciente)
-
-✅ **Agregado:**
-- Imágenes de alta calidad de Unsplash para cada curso
-- Google Maps completamente funcional con ubicación real
-- Efectos hover con zoom en imágenes
-- Overlays con iconos en las tarjetas de cursos
-- Estilos de gradiente animados para textos
-- Ventana de información en Google Maps con botón de direcciones
-
-✅ **Mejorado:**
-- Estructura HTML más limpia y semántica
-- Estilos CSS más organizados y mantenibles
-- JavaScript optimizado para Google Maps
-- Mejor responsive design en móviles
-
-✅ **Eliminado:**
-- Dependencia de p5.js (ya no es necesaria)
-- Referencias a videos de Cloudinary (ahora usa imágenes)
-- Código duplicado y archivos innecesarios
-
----
-
 ¡Disfruta de tu nueva página web! 🎉
 
-Para cualquier consulta o soporte adicional, no dudes en contactarnos.
+
+

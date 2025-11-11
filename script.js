@@ -106,6 +106,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Initialize Cloudinary videos
+    initializeCloudinaryVideos();
+
     // Intersection Observer for animations
     const observerOptions = {
         threshold: 0.1,
@@ -130,92 +133,154 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Google Maps Initialization
-function initMap() {
-    // Coordenadas de TALENTO TECH ORIENTE
-    // Avenida 3 Este # 13-33, Barrio Los Caobos, Cúcuta, Norte de Santander, Colombia
-    const talentoTechLocation = { lat: 7.8942, lng: -72.5039 };
-    
-    // Crear mapa con estilo personalizado
-    const map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
-        center: talentoTechLocation,
-        styles: [
-            {
-                featureType: 'all',
-                elementType: 'geometry',
-                stylers: [{ color: '#1e293b' }]
-            },
-            {
-                featureType: 'all',
-                elementType: 'labels.text.fill',
-                stylers: [{ color: '#cbd5e1' }]
-            },
-            {
-                featureType: 'water',
-                elementType: 'geometry',
-                stylers: [{ color: '#0f172a' }]
-            },
-            {
-                featureType: 'road',
-                elementType: 'geometry',
-                stylers: [{ color: '#334155' }]
-            },
-            {
-                featureType: 'poi',
-                elementType: 'labels',
-                stylers: [{ visibility: 'off' }]
-            }
-        ],
-        mapTypeControl: false,
-        streetViewControl: true,
-        fullscreenControl: true
-    });
+// Initialize Cloudinary Videos
+function initializeCloudinaryVideos() {
+    // Cloudinary video URLs - Replace with your actual Cloudinary video URLs
+    // Formato para videos: https://res.cloudinary.com/TU_CLOUD_NAME/video/upload/v1234567890/NOMBRE_VIDEO.mp4
+    // Formato para video player (recomendado): https://res.cloudinary.com/TU_CLOUD_NAME/video/upload/v1234567890/NOMBRE_VIDEO.mp4
+    const cloudinaryVideos = {
+        'Full Stack Developer': 'https://res.cloudinary.com/demo/video/upload/v1234567890/sample.mp4',
+        'Data Science & Analytics': 'https://res.cloudinary.com/demo/video/upload/v1234567890/sample.mp4',
+        'UX/UI Design': 'https://res.cloudinary.com/demo/video/upload/v1234567890/sample.mp4',
+        'Cloud Computing & DevOps': 'https://res.cloudinary.com/demo/video/upload/v1234567890/sample.mp4',
+        'Mobile Development': 'https://res.cloudinary.com/demo/video/upload/v1234567890/sample.mp4',
+        'Cybersecurity': 'https://res.cloudinary.com/demo/video/upload/v1234567890/sample.mp4'
+    };
 
-    // Crear marcador personalizado con animación
-    const marker = new google.maps.Marker({
-        position: talentoTechLocation,
-        map: map,
-        title: 'TALENTO TECH ORIENTE',
-        animation: google.maps.Animation.DROP
+    // Update video elements with Cloudinary URLs
+    const courseVideos = document.querySelectorAll('.course-video');
+    courseVideos.forEach(video => {
+        const courseName = video.getAttribute('data-course');
+        const sourceElement = video.querySelector('source');
+        
+        if (sourceElement && cloudinaryVideos[courseName]) {
+            // Actualiza la URL del video con la URL de Cloudinary
+            // Formato recomendado: https://res.cloudinary.com/TU_CLOUD_NAME/video/upload/c_fill,w_800,h_450/v1234567890/VIDEO.mp4
+            const videoUrl = cloudinaryVideos[courseName];
+            sourceElement.src = videoUrl;
+            // Recargar el video para aplicar la nueva URL
+            video.load();
+        }
     });
-
-    // Ventana de información con estilo elegante
-    const infoWindow = new google.maps.InfoWindow({
-        content: `
-            <div style="color: #1e293b; padding: 20px; font-family: 'Poppins', sans-serif; max-width: 300px;">
-                <h3 style="margin: 0 0 15px 0; color: #667eea; font-size: 20px; font-weight: 700;">
-                    🚀 TALENTO TECH ORIENTE
-                </h3>
-                <div style="line-height: 1.8; color: #334155;">
-                    <p style="margin: 8px 0;"><strong>📍 Dirección:</strong></p>
-                    <p style="margin: 5px 0;">Avenida 3 Este # 13-33</p>
-                    <p style="margin: 5px 0;">Barrio Los Caobos</p>
-                    <p style="margin: 5px 0;">Cúcuta, Norte de Santander</p>
-                    <p style="margin: 5px 0;">Colombia</p>
-                </div>
-                <a href="https://www.google.com/maps/dir/?api=1&destination=7.8942,-72.5039" 
-                   target="_blank" 
-                   style="display: inline-block; margin-top: 15px; padding: 10px 20px; 
-                          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-                          color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">
-                    Cómo llegar →
-                </a>
-            </div>
-        `
-    });
-
-    // Abrir ventana de información al hacer clic en el marcador
-    marker.addListener('click', function() {
-        infoWindow.open(map, marker);
-    });
-
-    // Abrir ventana de información por defecto
-    infoWindow.open(map, marker);
 }
 
-// Hacer la función disponible globalmente para el callback de Google Maps
-window.initMap = initMap;
+// Google Maps Initialization - DESHABILITADA (ahora usamos p5.js)
+// function initMap() {
+//     // Default coordinates - Replace with your actual location
+//     const defaultLocation = { lat: 19.4326, lng: -99.1332 }; // Example: Mexico City
+    
+//     // Create map
+//     const map = new google.maps.Map(document.getElementById('map'), {
+//         zoom: 15,
+//         center: defaultLocation,
+//         styles: [
+//             {
+//                 featureType: 'all',
+//                 elementType: 'geometry',
+//                 stylers: [{ color: '#1e293b' }]
+//             },
+//             {
+//                 featureType: 'all',
+//                 elementType: 'labels.text.fill',
+//                 stylers: [{ color: '#cbd5e1' }]
+//             },
+//             {
+//                 featureType: 'water',
+//                 elementType: 'geometry',
+//                 stylers: [{ color: '#0f172a' }]
+//             },
+//             {
+//                 featureType: 'road',
+//                 elementType: 'geometry',
+//                 stylers: [{ color: '#334155' }]
+//             },
+//             {
+//                 featureType: 'poi',
+//                 elementType: 'labels',
+//                 stylers: [{ visibility: 'off' }]
+//             }
+//         ]
+//     });
+
+//     // Try to get user's location
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(
+//             function(position) {
+//                 const userLocation = {
+//                     lat: position.coords.latitude,
+//                     lng: position.coords.longitude
+//                 };
+                
+//                 // Center map on user location
+//                 map.setCenter(userLocation);
+                
+//                 // Add marker for user location
+//                 new google.maps.Marker({
+//                     position: userLocation,
+//                     map: map,
+//                     title: 'Tu ubicación',
+//                     icon: {
+//                         url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+//                     }
+//                 });
+//             },
+//             function(error) {
+//                 console.log('Error getting location:', error);
+//                 // Use default location if geolocation fails
+//                 addDefaultMarker(map, defaultLocation);
+//             }
+//         );
+//     } else {
+//         // Browser doesn't support geolocation
+//         addDefaultMarker(map, defaultLocation);
+//     }
+
+//     // Add marker for TALENTO TECH ORIENTE location
+//     // Replace these coordinates with your actual business location
+//     const businessLocation = { lat: 19.4326, lng: -99.1332 };
+    
+//     const marker = new google.maps.Marker({
+//         position: businessLocation,
+//         map: map,
+//         title: 'TALENTO TECH ORIENTE',
+//         icon: {
+//             url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+//         },
+//         animation: google.maps.Animation.DROP
+//     });
+
+//     // Info window for business location
+//     const infoWindow = new google.maps.InfoWindow({
+//         content: `
+//             <div style="color: #1e293b; padding: 10px;">
+//                 <h3 style="margin: 0 0 10px 0; color: #6366f1;">TALENTO TECH ORIENTE</h3>
+//                 <p style="margin: 5px 0;"><strong>Dirección:</strong> Calle Principal #123, Zona Oriental</p>
+//                 <p style="margin: 5px 0;"><strong>Teléfono:</strong> +123 456 7890</p>
+//                 <p style="margin: 5px 0;"><strong>Email:</strong> info@talentotechoriente.com</p>
+//             </div>
+//         `
+//     });
+
+//     marker.addListener('click', function() {
+//         infoWindow.open(map, marker);
+//     });
+
+//     // Open info window by default
+//     infoWindow.open(map, marker);
+// }
+
+// function addDefaultMarker(map, location) {
+//     new google.maps.Marker({
+//         position: location,
+//         map: map,
+//         title: 'TALENTO TECH ORIENTE',
+//         icon: {
+//             url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+//         }
+//     });
+// }
+
+// window.initMap = initMap; // Ya no es necesario
 
 // Add scroll animation for header
 window.addEventListener('scroll', function() {
